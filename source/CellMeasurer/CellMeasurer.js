@@ -83,8 +83,9 @@ export default class CellMeasurer extends React.PureComponent<Props> {
         node.style.height = 'auto';
       }
 
-      const height = Math.ceil(node.offsetHeight);
-      const width = Math.ceil(node.offsetWidth);
+      const boundingClientRect = node.getBoundingClientRect();
+      const height = Math.ceil(boundingClientRect.height);
+      const width = Math.ceil(boundingClientRect.width);
 
       // Reset after measuring to avoid breaking styles; see #660
       if (styleWidth) {
